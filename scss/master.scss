@@ -1,0 +1,79 @@
+$white: #f2f2f2;
+$bg-colors: ( one: #db7a5a, two: #e6c271, three: #4c988d);
+@each $name,
+$color in $bg-colors {
+    .#{$name} {
+        background: $color;
+    }
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+section {
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    color: $white;
+    margin-bottom: 2rem;
+}
+
+p {
+    color: $white;
+}
+
+.one-icon {
+    background: darken(#eba66a, 7);
+    height: 4rem;
+    width: 4rem;
+    display: grid;
+    place-items: center;
+    // border-radius 50% teeb ruudu ringiks
+    border-radius: 50%;
+}
+
+.one {
+    position: relative;
+}
+
+.one::after,
+.one::before {
+    position: absolute;
+    content: '';
+    width: 6rem;
+    height: 6rem;
+    background: #db7a5a;
+    bottom: -1rem;
+}
+
+.one::before {
+    right: 50%;
+    transform: skew(0, 20deg);
+}
+
+.one::after {
+    left: 50%;
+    transform: skew(0, -20deg);
+}
+
+.two {
+    position: relative;
+    z-index: 100;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10vh), 0 100%);
+    // Tõmbab tühja ruumi sisse alumise alumendi
+    margin-bottom: -10vh;
+    img {
+        clip-path: circle();
+        // Saab luua ise kujundeid või kasutada tööriista
+        clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+    }
+}
